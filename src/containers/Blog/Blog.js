@@ -3,9 +3,14 @@ import React, { Component } from 'react';
 // import axios from '../../axios';
 import './Blog.css';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
+// import NewPost from './NewPost/NewPost';
+import asyncComponent from '../hoc/asyncComponent';
 // import FullPost from './FullPost/FullPost';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
+
+const AsyncNewPost = asyncComponent(() => {
+  return import('./NewPost/NewPost');
+});
 
 class Blog extends Component {
   state = {
@@ -38,7 +43,8 @@ class Blog extends Component {
           </nav>
         </header>
         <Switch>
-          {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null};
+          {/* {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}; */}
+          <Route path="/new-post" component={AsyncNewPost} />;
           <Route path="/posts/" component={Posts} />
           {/* <Route path="/" component={Posts} /> */}
           {/* <Redirect from="/" to="/posts" component={Posts} /> */}
