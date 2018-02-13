@@ -11,7 +11,7 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    console.log('[Posts] props: ', this.props)
+    // console.log('[AllPosts] props: ', this.props)
     axios.get('/posts')
       .then(response => {
         const posts = response.data.slice(0, 4)
@@ -55,6 +55,7 @@ class Posts extends Component {
         <section className="Posts">
           {posts}
         </section>
+        <p>is this where the full post will be rendered, and if so why?</p>
         <Route path={this.props.match.url + '/:id'} exact component={FullPost} />
       </div>
     )

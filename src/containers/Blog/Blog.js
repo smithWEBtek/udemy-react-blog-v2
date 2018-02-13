@@ -23,7 +23,6 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-
               <li><NavLink
                 to="/posts/"
                 exact
